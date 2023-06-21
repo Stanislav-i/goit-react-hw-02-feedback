@@ -7,7 +7,6 @@ export class App extends Component {
     good: 0,
     neutral: 0,
     bad: 0,
-    total: 0,
   };
 
   handleBtnClick = e => {
@@ -16,17 +15,17 @@ export class App extends Component {
     switch (btnId) {
       case 'good':
         this.setState(prevState => {
-          return { good: prevState.good + 1, total: prevState.total + 1 };
+          return { good: prevState.good + 1};
         });
         break;
       case 'neutral':
         this.setState(prevState => {
-          return { neutral: prevState.neutral + 1, total: prevState.total + 1 };
+          return { neutral: prevState.neutral + 1};
         });
         break;
       case 'bad':
         this.setState(prevState => {
-          return { bad: prevState.bad + 1, total: prevState.total + 1 };
+          return { bad: prevState.bad + 1};
         });
         break;
 
@@ -36,7 +35,8 @@ export class App extends Component {
   };
 
   render() {
-    const percentage = ((this.state.good * 100) / this.state.total).toFixed(1);
+    const total = this.state.good + this.state.bad + this.state.neutral; 
+    const percentage = ((this.state.good * 100) / total).toFixed(1);
 
     return (
       <div
@@ -54,7 +54,7 @@ export class App extends Component {
           goodValue={this.state.good}
           neutralValue={this.state.neutral}
           badValue={this.state.bad}
-          total={this.state.total}
+          total={total}
           percentage={percentage}
         />
       </div>
