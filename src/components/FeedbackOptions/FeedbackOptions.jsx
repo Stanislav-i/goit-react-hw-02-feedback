@@ -1,14 +1,14 @@
 import css from './Buttons.module.css';
 import PropTypes from 'prop-types';
 
-export const Buttons = ({ onBtnClick }) => {
+export const FeedbackOptions = ({ onLeaveFeedback }) => {
   return (
     <div>
       <button
         type="button"
         id="good"
         className={css.btnstyle}
-        onClick={onBtnClick}
+        onClick={onLeaveFeedback}
       >
         Good
       </button>
@@ -16,7 +16,7 @@ export const Buttons = ({ onBtnClick }) => {
         type="button"
         id="neutral"
         className={css.btnstyle}
-        onClick={onBtnClick}
+        onClick={onLeaveFeedback}
       >
         Neutral
       </button>
@@ -24,7 +24,7 @@ export const Buttons = ({ onBtnClick }) => {
         type="button"
         id="bad"
         className={css.btnstyle}
-        onClick={onBtnClick}
+        onClick={onLeaveFeedback}
       >
         Bad
       </button>
@@ -32,6 +32,6 @@ export const Buttons = ({ onBtnClick }) => {
   );
 };
 
-Buttons.propTypes = {
+FeedbackOptions.propTypes = {
   onBtnClick: PropTypes.func,
 };

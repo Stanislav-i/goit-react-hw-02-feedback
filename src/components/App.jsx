@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Buttons } from './Buttons/Buttons.jsx';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions.jsx';
 import { Statistics } from './Statistics/Statistics.jsx';
 
 export class App extends Component {
@@ -9,23 +9,23 @@ export class App extends Component {
     bad: 0,
   };
 
-  handleBtnClick = e => {
+  onLeaveFeedback = e => {
     const btnId = e.currentTarget.id;
 
     switch (btnId) {
       case 'good':
         this.setState(prevState => {
-          return { good: prevState.good + 1};
+          return { good: prevState.good + 1 };
         });
         break;
       case 'neutral':
         this.setState(prevState => {
-          return { neutral: prevState.neutral + 1};
+          return { neutral: prevState.neutral + 1 };
         });
         break;
       case 'bad':
         this.setState(prevState => {
-          return { bad: prevState.bad + 1};
+          return { bad: prevState.bad + 1 };
         });
         break;
 
@@ -35,7 +35,7 @@ export class App extends Component {
   };
 
   render() {
-    const total = this.state.good + this.state.bad + this.state.neutral; 
+    const total = this.state.good + this.state.bad + this.state.neutral;
     const percentage = ((this.state.good * 100) / total).toFixed(1);
 
     return (
@@ -46,10 +46,11 @@ export class App extends Component {
           flexDirection: 'column',
           alignItems: 'center',
           paddingTop: '100px',
+          color: "white"
         }}
       >
         <h1>Please leave feedback</h1>
-        <Buttons onBtnClick={this.handleBtnClick} />
+        <FeedbackOptions onLeaveFeedback={this.onLeaveFeedback} />
         <Statistics
           goodValue={this.state.good}
           neutralValue={this.state.neutral}
