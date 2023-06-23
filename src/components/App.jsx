@@ -34,9 +34,18 @@ export class App extends Component {
     }
   };
 
+  countTotal = () => {
+    const { good, bad, neutral } = this.state;
+    return good + bad + neutral;
+  }
+
+  countPositivePercentage = (totalCount) => { 
+    return ((this.state.good * 100) / totalCount).toFixed(1);
+  }
+
   render() {
-    const total = this.state.good + this.state.bad + this.state.neutral;
-    const percentage = ((this.state.good * 100) / total).toFixed(1);
+    const total = this.countTotal();
+    const percentage = this.countPositivePercentage(total);
 
     return (
       <div
